@@ -160,3 +160,5 @@ class Endless:
 
             all_sprites_list.draw(window)
             pygame.display.update()
+        for player in all_sprites_list:
+            pygame.sprite.Sprite.kill(player)

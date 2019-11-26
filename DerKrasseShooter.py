@@ -19,7 +19,7 @@ def start_screen():
                 if event.key == pygame.K_SPACE:
                     start_screen_run = False
                 if event.key == pygame.K_x:
-                    return run
+                    pygame.quit()
         for block in block_list:
             pygame.sprite.Sprite.kill(block)
         for block in block2_list:
@@ -27,7 +27,7 @@ def start_screen():
         for explosion in all_explosion:
             pygame.sprite.Sprite.kill(explosion)
 
-        window.fill(red)
+        window.blit(bg, (0, 0))
         pygame.display.update()
     mouse_visibility = pygame.mouse.set_visible(False)
 

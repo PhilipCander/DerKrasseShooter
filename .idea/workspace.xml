@@ -4,9 +4,7 @@
     <list default="true" id="76bd5a4b-d0ef-4c28-9008-7cc4028aea47" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DerKrasseShooter.py" beforeDir="false" afterPath="$PROJECT_DIR$/DerKrasseShooter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/endless.py" beforeDir="false" afterPath="$PROJECT_DIR$/endless.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +18,7 @@
   </component>
   <component name="ProjectId" id="1U7zd9lXZySU53IDyFsqk7UJjhR" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="D:/Progame/Git/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -81,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574791260560</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed Explosion counter. Now the explosions are counted for each explosion.">
+      <created>1574793875030</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1574793875030</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test" />
+    <MESSAGE value="Fixed Explosion counter. Now the explosions are counted for each explosion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Explosion counter. Now the explosions are counted for each explosion." />
   </component>
 </project>
