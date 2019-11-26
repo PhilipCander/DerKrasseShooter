@@ -38,6 +38,9 @@ all_sprites_list = pygame.sprite.Group()
 
 # setting resolution
 if screen_height == 1080 and screen_width == 1920:
+    title1 = pygame.image.load("rec/Titel1.png").convert_alpha()
+    title2 = pygame.image.load("rec/Titel2.png").convert_alpha()
+
     bg = pygame.image.load("rec/bg.jpg").convert_alpha()
     bg = pygame.transform.scale(bg, (screen_width, screen_height))
     bg2 = pygame.image.load("rec/bg2.jpg").convert_alpha()
