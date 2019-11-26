@@ -3,6 +3,7 @@ from classes import Block
 from classes import Wall
 from endless import Endless
 
+
 def start_screen():
     global run
     global clock
