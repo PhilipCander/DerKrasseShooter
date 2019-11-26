@@ -1,6 +1,7 @@
 from settings import *
 from classes import Block
 from classes import Wall
+from classes import Explosion
 
 
 def header(health):
@@ -47,7 +48,6 @@ class Endless:
         self.count = 0
         self.mouse_visibility = pygame.mouse.set_visible(False)
         self.health = health
-        self.explosion_count = 0
 
     def run(self):
         # missile = Block(red, None, 5, 10, None)
@@ -112,7 +112,7 @@ class Endless:
                     print(block.health)
                 if block.health <= 0:
                     pygame.sprite.Sprite.kill(block)
-                    explosion = Block(None, explosionpic, 50, 50, None)
+                    explosion = Explosion(explosionpic, 50, 50)
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
                     all_explosion.add(explosion)
                     all_sprites_list.add(explosion)
@@ -129,17 +129,17 @@ class Endless:
                     print(block.health)
                 if block.health <= 0:
                     pygame.sprite.Sprite.kill(block)
-                    explosion = Block(None, explosionpic, 50, 50, None)
+                    explosion = Explosion(explosionpic, 50, 50)
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
                     all_explosion.add(explosion)
                     all_sprites_list.add(explosion)
 
             # Checking for all interaction of block
             for explosion in all_explosion:
-                self.explosion_count += 1
-                if self.explosion_count >= 60:
+                explosion.explosion_count += 1
+                if explosion.explosion_count >= 60:
                     pygame.sprite.Sprite.kill(explosion)
-                    self.explosion_count = 0
+                    explosion.explosion_count = 0
 
             # Checking for all interaction of missile
             for missile in missiles:

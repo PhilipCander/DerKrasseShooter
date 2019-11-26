@@ -23,7 +23,6 @@ white = (250, 250, 250)
 speed = 90
 wave = 1
 wave2 = 1
-cooldown = 100
 shoots = 1
 run = False
 health = 100

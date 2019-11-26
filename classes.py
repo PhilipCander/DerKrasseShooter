@@ -24,8 +24,21 @@ class Wall(pygame.sprite.Sprite):
         super().__init__()
         self.color = color
         self.image = pygame.Surface([width, height])
-
         self.image.fill(black)
         pygame.draw.rect(self.image, color, (0, 0, width, height))
+
+        self.rect = self.image.get_rect()
+
+
+class Explosion(pygame.sprite.Sprite):
+    def __init__(self, pic, width, height):
+        super().__init__()
+        self.pic = pic
+        self.width = width
+        self.height = height
+        self.explosion_count = 0
+        self.image = pygame.Surface([width, height], pygame.SRCALPHA)
+        self.image = self.image.convert_alpha(self.image)
+        self.image.blit(self.pic, (0, 0))
 
         self.rect = self.image.get_rect()
