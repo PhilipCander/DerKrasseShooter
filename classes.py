@@ -42,3 +42,17 @@ class Explosion(pygame.sprite.Sprite):
         self.image.blit(self.pic, (0, 0))
 
         self.rect = self.image.get_rect()
+
+
+class Background(pygame.sprite.Sprite):
+    def __init__(self, pic):
+        super().__init__()
+        self.pic = pic
+        self.width = screen_width
+        self.height = screen_height
+        self.explosion_count = 0
+        self.image = pygame.Surface([screen_width, screen_height], pygame.SRCALPHA)
+        self.image = self.image.convert_alpha(self.image)
+        self.image.blit(self.pic, (0, 0))
+
+        self.rect = self.image.get_rect()

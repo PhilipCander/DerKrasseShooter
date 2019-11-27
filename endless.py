@@ -4,18 +4,14 @@ from classes import Wall
 from classes import Explosion
 
 
-def header(health):
-    pygame.draw.rect(window, black, (0, 0, screen_width, 75))
-    pygame.draw.rect(window, red, (((screen_width / 2) - 300), 50, 300, 20))
-    pygame.draw.rect(window, green, (((screen_width / 2) - 300), 50, (health*3), 20))
 
-
-def body():
+def body(health):
     global bg2
-    bg2 = pygame.transform.scale(bg2, (screen_width, 200))
-    window.blit(bg2, (0, (screen_height - 200)))
+    bg2 = pygame.transform.scale(bg2, (screen_width, screen_height - 300))
+    window.blit(bg2, (0, (screen_height - 300)))
     # pygame.draw.rect(window, black, (0, (screen_height - 200), screen_width, 200))
-
+    pygame.draw.rect(window, red, (1600, screen_height - 200, 300, 20))
+    pygame.draw.rect(window, green, (1600, screen_height - 200, health*3, 20))
 
 def blub(times):
     for i in range(times):
@@ -37,6 +33,17 @@ def blub2(times):
 
         block2_list.add(block2)
         all_sprites_list.add(block2)
+
+
+def blub3(times):
+    for i in range(times):
+        bomber = Block(green, None, 200, 75, 4)
+
+        bomber.rect.x = random.randint(-500, -200)
+        bomber.rect.y = random.randrange(75, screen_height - 250)
+
+        bomber_list.add(bomber)
+        all_sprites_list.add(bomber)
 
 
 class Endless:
@@ -64,8 +71,7 @@ class Endless:
             self.count += 1
             # drawing the layers
             window.blit(bg, (0, 0))
-            header(self.health)
-            body()
+            body(self.health)
             self.mouse = pygame.mouse.get_pos()
             # defining wall position
             wall.rect.x = screen_width - 100
@@ -96,6 +102,11 @@ class Endless:
             for block2 in block2_list:
                 # speed
                 block2.rect.x += 3
+            # moving bomber
+            for bomber in bomber_list:
+                # speed
+                bomber.rect.x += 1
+
             # defining position of the player
             player.rect.x = self.mouse[0]
             player.rect.y = screen_height - 200
@@ -104,12 +115,20 @@ class Endless:
             for block in block_list:
                 blocks_hit_list = pygame.sprite.spritecollide(block, missiles, True)
                 end_screen = pygame.sprite.spritecollide(block, wall_list, False)
+                bomber_exploded = pygame.sprite.spritecollide(block, bomber_exploded_list, False)
+
                 if end_screen:
                     self.health -= 10
                     pygame.sprite.Sprite.kill(block)
                 if blocks_hit_list:
                     block.health -= 1
                     print(block.health)
+                if bomber_exploded:
+                    pygame.sprite.Sprite.kill(block)
+                    explosion = Explosion(explosionpic, 50, 50)
+                    explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
+                    all_explosion.add(explosion)
+                    all_sprites_list.add(explosion)
                 if block.health <= 0:
                     pygame.sprite.Sprite.kill(block)
                     explosion = Explosion(explosionpic, 50, 50)
@@ -121,12 +140,20 @@ class Endless:
             for block in block2_list:
                 blocks_hit_list = pygame.sprite.spritecollide(block, missiles, True)
                 end_screen = pygame.sprite.spritecollide(block, wall_list, False)
+                bomber_exploded = pygame.sprite.spritecollide(block, bomber_exploded_list, False)
+
                 if end_screen:
                     self.health -= 20
                     pygame.sprite.Sprite.kill(block)
                 if blocks_hit_list:
                     block.health -= 1
                     print(block.health)
+                if bomber_exploded:
+                    pygame.sprite.Sprite.kill(block)
+                    explosion = Explosion(explosionpic, 50, 50)
+                    explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
+                    all_explosion.add(explosion)
+                    all_sprites_list.add(explosion)
                 if block.health <= 0:
                     pygame.sprite.Sprite.kill(block)
                     explosion = Explosion(explosionpic, 50, 50)
@@ -134,10 +161,40 @@ class Endless:
                     all_explosion.add(explosion)
                     all_sprites_list.add(explosion)
 
-            # Checking for all interaction of block
+            # checking for all interactions of bomber
+            for bomber in bomber_list:
+                blocks_hit_list = pygame.sprite.spritecollide(bomber, missiles, True)
+                end_screen = pygame.sprite.spritecollide(bomber, wall_list, False)
+                bomber_exploded = pygame.sprite.spritecollide(bomber, bomber_exploded_list, False)
+                if end_screen:
+                    self.health -= 20
+                    pygame.sprite.Sprite.kill(bomber)
+                if blocks_hit_list:
+                    bomber.health -= 1
+                    print(bomber.health)
+                if bomber_exploded:
+                    pygame.sprite.Sprite.kill(bomber)
+                    explosion = Explosion(bomber_explosion, 300, 150)
+                    explosion.rect.x, explosion.rect.y = bomber.rect.x, bomber.rect.y
+                    bomber_exploded_list.add(explosion)
+                    all_sprites_list.add(explosion)
+                if bomber.health <= 0:
+                    pygame.sprite.Sprite.kill(bomber)
+                    explosion = Explosion(bomber_explosion, 300, 150)
+                    explosion.rect.x, explosion.rect.y = bomber.rect.x, bomber.rect.y
+                    bomber_exploded_list.add(explosion)
+                    all_sprites_list.add(explosion)
+
+            # Checking the countdown for explosions
             for explosion in all_explosion:
                 explosion.explosion_count += 1
                 if explosion.explosion_count >= 60:
+                    pygame.sprite.Sprite.kill(explosion)
+                    explosion.explosion_count = 0
+
+            for explosion in bomber_exploded_list:
+                explosion.explosion_count += 1
+                if explosion.explosion_count >= 120:
                     pygame.sprite.Sprite.kill(explosion)
                     explosion.explosion_count = 0
 
@@ -157,8 +214,11 @@ class Endless:
                 if zufall == 1:
                     blub2(1)
                 self.count = 0
-
+                if zufall == 2:
+                    blub3(1)
             all_sprites_list.draw(window)
             pygame.display.update()
+
+        # after exiting, killing player-sprite
         for player in all_sprites_list:
             pygame.sprite.Sprite.kill(player)

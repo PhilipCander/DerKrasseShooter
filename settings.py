@@ -31,19 +31,26 @@ clock = pygame.time.Clock()
 # creating sprite-groups
 block_list = pygame.sprite.Group()
 block2_list = pygame.sprite.Group()
+bomber_list = pygame.sprite.Group()
 missiles = pygame.sprite.Group()
 all_explosion = pygame.sprite.Group()
+bomber_exploded_list = pygame.sprite.Group()
 wall_list = pygame.sprite.Group()
 all_sprites_list = pygame.sprite.Group()
+background_list = pygame.sprite.Group()
 
 # setting resolution
 if screen_height == 1080 and screen_width == 1920:
     title1 = pygame.image.load("rec/Titel1.png").convert_alpha()
     title2 = pygame.image.load("rec/Titel2.png").convert_alpha()
+    titelx = 930
+    titely = 264
+
 
     bg = pygame.image.load("rec/bg.jpg").convert_alpha()
     bg = pygame.transform.scale(bg, (screen_width, screen_height))
     bg2 = pygame.image.load("rec/bg2.jpg").convert_alpha()
+    bg2 = pygame.transform.scale(bg2, (screen_width, (screen_height - 500)))
     spaceship = pygame.image.load("rec/spaceship.png").convert_alpha()
     spaceship = pygame.transform.scale(spaceship, (50, 50))
 
@@ -52,3 +59,5 @@ if screen_height == 1080 and screen_width == 1920:
 
     explosionpic = pygame.image.load("rec/explosion.png").convert_alpha()
     explosionpic = pygame.transform.scale(explosionpic, (50, 50))
+    bomber_explosion = pygame.image.load("rec/explosion.png").convert_alpha()
+    bomber_explosion = pygame.transform.scale(bomber_explosion, (300, 150))

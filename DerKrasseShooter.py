@@ -1,5 +1,6 @@
 from settings import *
 from endless import Endless
+from classes import Background
 
 
 def start_screen():
@@ -7,6 +8,16 @@ def start_screen():
     global clock
     global health
     global mouse_visibility
+    background = Background(bg)
+    background2 = Background(bg)
+    background_list.add(background)
+    background_list.add(background2)
+
+    background.rect.x = 0
+    background2.rect.x = screen_width
+
+
+
     start_screen_run = True
     mouse_visibility = pygame.mouse.set_visible(True)
     while start_screen_run:
@@ -25,8 +36,17 @@ def start_screen():
         for explosion in all_explosion:
             pygame.sprite.Sprite.kill(explosion)
 
-        window.blit(bg, (0, 0))
-        pygame.display.update()
+        for background in background_list:
+            background.rect.x -= 1
+            if background.rect.x <= -screen_width:
+                pygame.sprite.Sprite.kill(background)
+                background_list.add(background)
+                background.rect.x = screen_width
+        window.fill(black)
+        background_list.draw(window)
+        window.blit(title2, ((screen_width/2) - (titelx/2), (screen_height/2) - (titely/2)))
+
+        pygame.display.flip()
     mouse_visibility = pygame.mouse.set_visible(False)
 
 
@@ -34,9 +54,9 @@ mouse_visibility = pygame.mouse.set_visible(True)
 run = True
 while run:
     clock.tick(30)
+
     start_screen()
     endless = Endless(100)
     endless.run()
-
 
 pygame.quit()
