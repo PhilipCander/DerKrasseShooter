@@ -10,7 +10,7 @@ screen_width, screen_height = user32.GetSystemMetrics(0), user32.GetSystemMetric
 pygame.init()
 
 # defining the window
-window = pygame.display.set_mode((screen_width, screen_height))#pygame.FULLSCREEN)
+window = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
 
 # defining some colors
 red = (250, 0, 0)

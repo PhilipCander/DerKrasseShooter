@@ -1,6 +1,4 @@
 from settings import *
-from classes import Block
-from classes import Wall
 from endless import Endless
 
 
