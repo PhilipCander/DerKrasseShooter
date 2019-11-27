@@ -56,3 +56,15 @@ class Background(pygame.sprite.Sprite):
         self.image.blit(self.pic, (0, 0))
 
         self.rect = self.image.get_rect()
+
+
+class Player(pygame.sprite.Sprite):
+    def __init__(self, pic, width, height):
+        super().__init__()
+        self.pic = pic
+        self.image = pygame.Surface([width, height], pygame.SRCALPHA)
+        self.image = self.image.convert_alpha(self.image)
+        self.image.blit(self.pic, (0, 0))
+
+        self.rect = self.image.get_rect()
+

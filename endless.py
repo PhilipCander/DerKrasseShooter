@@ -2,13 +2,14 @@ from settings import *
 from classes import Block
 from classes import Wall
 from classes import Explosion
+from classes import Player
 
 
 
 def body(health):
     global bg2
-    bg2 = pygame.transform.scale(bg2, (screen_width, screen_height - 300))
-    window.blit(bg2, (0, (screen_height - 300)))
+    bg2 = pygame.transform.scale(bg2, (screen_width, screen_height - 250))
+    window.blit(bg2, (0, (screen_height - 250)))
     # pygame.draw.rect(window, black, (0, (screen_height - 200), screen_width, 200))
     pygame.draw.rect(window, red, (1600, screen_height - 200, 300, 20))
     pygame.draw.rect(window, green, (1600, screen_height - 200, health*3, 20))
@@ -18,7 +19,7 @@ def blub(times):
         block = Block(None, spaceship, 50, 50, 1)
 
         block.rect.x = random.randint(-300, -50)
-        block.rect.y = random.randint(75, screen_height - 250)
+        block.rect.y = random.randint(75, screen_height - 450)
 
         block_list.add(block)
         all_sprites_list.add(block)
@@ -29,7 +30,7 @@ def blub2(times):
         block2 = Block(None, spacesship2, 50, 50, 2)
 
         block2.rect.x = random.randint(-300, -50)
-        block2.rect.y = random.randrange(75, screen_height - 250)
+        block2.rect.y = random.randrange(75, screen_height - 450)
 
         block2_list.add(block2)
         all_sprites_list.add(block2)
@@ -37,10 +38,10 @@ def blub2(times):
 
 def blub3(times):
     for i in range(times):
-        bomber = Block(green, None, 200, 75, 4)
+        bomber = Block(None, bomberpic, 200, 75, 4)
 
         bomber.rect.x = random.randint(-500, -200)
-        bomber.rect.y = random.randrange(75, screen_height - 250)
+        bomber.rect.y = random.randrange(75, screen_height - 450)
 
         bomber_list.add(bomber)
         all_sprites_list.add(bomber)
@@ -49,18 +50,23 @@ def blub3(times):
 class Endless:
     def __init__(self, health):
         super().__init__()
+        self.keys = pygame.key.get_pressed()
         self.endless_run = True
         self.mouse = pygame.mouse.get_pos()
         self.click = pygame.mouse.get_pressed()
         self.count = 0
         self.mouse_visibility = pygame.mouse.set_visible(False)
         self.health = health
+        self.score = 0
 
     def run(self):
         # missile = Block(red, None, 5, 10, None)
-        player = Block(red, None, 25, 25, None)
+        player = Player(spaceship, 50, 50)
+        player.rect.x = screen_width/2
+        cursor = Block(None, cursorpic, 40, 40, None)
         wall = Wall(red, 10, screen_height)
         wall_list.add(wall)
+
         all_sprites_list.add(wall)
         all_sprites_list.add(player)
         blub(2)
@@ -73,6 +79,7 @@ class Endless:
             window.blit(bg, (0, 0))
             body(self.health)
             self.mouse = pygame.mouse.get_pos()
+            self.keys = pygame.key.get_pressed()
             # defining wall position
             wall.rect.x = screen_width - 100
             wall.rect.y = 0
@@ -82,10 +89,11 @@ class Endless:
                         self.endless_run = False
                     if event.key == pygame.K_ESCAPE:
                         self.endless_run = False
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
                         missile = Block(white, None, 5, 10, None)
-                        missile.rect.x = self.mouse[0]
+                        missile.rect.x = player.rect.x + 25
                         missile.rect.y = player.rect.y
                         missiles.add(missile)
                         all_sprites_list.add(missile)
@@ -107,9 +115,16 @@ class Endless:
                 # speed
                 bomber.rect.x += 1
 
+            # defining position of the cursor
+            cursor.rect.x = self.mouse[0]
+            cursor.rect.y = self.mouse[1]
+
             # defining position of the player
-            player.rect.x = self.mouse[0]
-            player.rect.y = screen_height - 200
+            player.rect.y = screen_height - 300
+            if self.keys[pygame.K_a]:
+                player.rect.x -= 10
+            if self.keys[pygame.K_d]:
+                player.rect.x += 10
 
             # Checking for all interactions of block
             for block in block_list:
@@ -124,12 +139,14 @@ class Endless:
                     block.health -= 1
                     print(block.health)
                 if bomber_exploded:
+                    self.score += 5
                     pygame.sprite.Sprite.kill(block)
                     explosion = Explosion(explosionpic, 50, 50)
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
                     all_explosion.add(explosion)
                     all_sprites_list.add(explosion)
                 if block.health <= 0:
+                    self.score += 5
                     pygame.sprite.Sprite.kill(block)
                     explosion = Explosion(explosionpic, 50, 50)
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
@@ -149,12 +166,14 @@ class Endless:
                     block.health -= 1
                     print(block.health)
                 if bomber_exploded:
+                    self.score += 5
                     pygame.sprite.Sprite.kill(block)
                     explosion = Explosion(explosionpic, 50, 50)
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
                     all_explosion.add(explosion)
                     all_sprites_list.add(explosion)
                 if block.health <= 0:
+                    self.score += 5
                     pygame.sprite.Sprite.kill(block)
                     explosion = Explosion(explosionpic, 50, 50)
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
@@ -173,12 +192,14 @@ class Endless:
                     bomber.health -= 1
                     print(bomber.health)
                 if bomber_exploded:
+                    self.score += 15
                     pygame.sprite.Sprite.kill(bomber)
                     explosion = Explosion(bomber_explosion, 300, 150)
                     explosion.rect.x, explosion.rect.y = bomber.rect.x, bomber.rect.y
                     bomber_exploded_list.add(explosion)
                     all_sprites_list.add(explosion)
                 if bomber.health <= 0:
+                    self.score += 15
                     pygame.sprite.Sprite.kill(bomber)
                     explosion = Explosion(bomber_explosion, 300, 150)
                     explosion.rect.x, explosion.rect.y = bomber.rect.x, bomber.rect.y
@@ -216,7 +237,10 @@ class Endless:
                 self.count = 0
                 if zufall == 2:
                     blub3(1)
+            all_sprites_list.add(cursor)
             all_sprites_list.draw(window)
+            text = pygame.font.Font.render(font1, f"{self.score}", True, green)
+            window.blit(text, (50, screen_height - 200))
             pygame.display.update()
 
         # after exiting, killing player-sprite
