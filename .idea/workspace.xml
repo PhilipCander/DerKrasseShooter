@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76bd5a4b-d0ef-4c28-9008-7cc4028aea47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rec/Bomber.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/FFFFORWA.TTF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/cursor.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/cursor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/endless.py" beforeDir="false" afterPath="$PROJECT_DIR$/endless.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="76bd5a4b-d0ef-4c28-9008-7cc4028aea47" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574870519353</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Trying to change the art of movement into mouse and keyboard style.">
+      <created>1574894965952</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574894965952</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -145,6 +143,7 @@
     <MESSAGE value="Fixed Explosion counter. Now the explosions are counted for each explosion." />
     <MESSAGE value="Added titles." />
     <MESSAGE value="Added bombers and edited the start-screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added bombers and edited the start-screen" />
+    <MESSAGE value="Trying to change the art of movement into mouse and keyboard style." />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to change the art of movement into mouse and keyboard style." />
   </component>
 </project>
