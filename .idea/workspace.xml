@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="76bd5a4b-d0ef-4c28-9008-7cc4028aea47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/endless.py" beforeDir="false" afterPath="$PROJECT_DIR$/endless.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-    </list>
+    <list default="true" id="76bd5a4b-d0ef-4c28-9008-7cc4028aea47" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574895228654</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Improved the missile flight">
+      <created>1574905246012</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574905246012</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +165,7 @@
     <MESSAGE value="Added titles." />
     <MESSAGE value="Added bombers and edited the start-screen" />
     <MESSAGE value="Trying to change the art of movement into mouse and keyboard style." />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying to change the art of movement into mouse and keyboard style." />
+    <MESSAGE value="Improved the missile flight" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved the missile flight" />
   </component>
 </project>
