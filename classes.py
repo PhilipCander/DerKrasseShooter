@@ -9,6 +9,7 @@ class Block(pygame.sprite.Sprite):
         self.health = health
         self.width = width
         self.height = height
+        self.pos = None
         self.image = pygame.Surface([width, height], pygame.SRCALPHA)
         self.image = self.image.convert_alpha(self.image)
         if self.color is None:
@@ -68,3 +69,29 @@ class Player(pygame.sprite.Sprite):
 
         self.rect = self.image.get_rect()
 
+
+class Missile(pygame.sprite.Sprite):
+    def __init__(self, color, width, height, mouse_x, mouse_y, start_x, start_y):
+        super().__init__()
+        self.color = color
+        self.width = width
+        self.height = height
+        self.image = pygame.Surface([width, height], pygame.SRCALPHA)
+        self.image = self.image.convert_alpha(self.image)
+        pygame.draw.ellipse(self.image, color, [0, 0, width, height], 0)
+
+        # does not work yet
+        self.start_x = start_x
+        self.start_y = start_y
+        self.dest_x = mouse_x
+        self.dest_y = mouse_y
+        self.diff_x = self.dest_x - self.start_x
+        self.diff_y = self.dest_y - self.start_y
+
+        print("test", self.diff_x, self.diff_y)
+        self.angle = math.atan2(self.diff_y, self.diff_x)
+        self.angle = math.degrees(self.angle)
+
+        self.change_x = math.cos(self.angle) * 10
+        self.change_y = math.sin(self.angle) * 10
+        self.rect = self.image.get_rect()

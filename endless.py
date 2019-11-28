@@ -3,7 +3,7 @@ from classes import Block
 from classes import Wall
 from classes import Explosion
 from classes import Player
-
+from classes import Missile
 
 
 def body(health):
@@ -13,6 +13,7 @@ def body(health):
     # pygame.draw.rect(window, black, (0, (screen_height - 200), screen_width, 200))
     pygame.draw.rect(window, red, (1600, screen_height - 200, 300, 20))
     pygame.draw.rect(window, green, (1600, screen_height - 200, health*3, 20))
+
 
 def blub(times):
     for i in range(times):
@@ -66,7 +67,7 @@ class Endless:
         cursor = Block(None, cursorpic, 40, 40, None)
         wall = Wall(red, 10, screen_height)
         wall_list.add(wall)
-
+        cursor_list.add(cursor)
         all_sprites_list.add(wall)
         all_sprites_list.add(player)
         blub(2)
@@ -92,7 +93,7 @@ class Endless:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if event.button == 1:
-                        missile = Block(white, None, 5, 10, None)
+                        missile = Missile(white, 5, 10, self.mouse[0], self.mouse[1], player.rect.x, player.rect.y)
                         missile.rect.x = player.rect.x + 25
                         missile.rect.y = player.rect.y
                         missiles.add(missile)
@@ -100,8 +101,20 @@ class Endless:
 
             # moving the missile
             for missile in missiles:
-                # speed
-                missile.rect.y -= 20
+                start_x = player.rect.x
+                start_y = player.rect.y
+                dest_x = self.mouse[0]
+                dest_y = self.mouse[1]
+                x_diff = dest_x - start_x
+                y_diff = dest_y - start_y
+                angle = math.atan2(y_diff, x_diff)
+                # missile.angle = math.degrees(angle)
+                change_x = math.cos(angle) * 20
+                change_y = math.sin(angle) * 20
+
+                missile.rect.x += change_x
+                missile.rect.y += change_y
+
             # moving block
             for block in block_list:
                 # speed
@@ -237,12 +250,15 @@ class Endless:
                 self.count = 0
                 if zufall == 2:
                     blub3(1)
-            all_sprites_list.add(cursor)
+
             all_sprites_list.draw(window)
+            cursor_list.draw(window)
             text = pygame.font.Font.render(font1, f"{self.score}", True, green)
             window.blit(text, (50, screen_height - 200))
             pygame.display.update()
 
-        # after exiting, killing player-sprite
+        # after exiting, killing sprites
+        for cursor in cursor_list:
+            pygame.sprite.Sprite.kill(cursor)
         for player in all_sprites_list:
             pygame.sprite.Sprite.kill(player)

@@ -1,6 +1,8 @@
 import pygame
 import random
 import ctypes
+import math
+math.acos(1)
 randomInit = random.randint(0, 0)
 
 # getting screensize for formatting the window
@@ -37,6 +39,7 @@ bomber_exploded_list = pygame.sprite.Group()
 wall_list = pygame.sprite.Group()
 all_sprites_list = pygame.sprite.Group()
 background_list = pygame.sprite.Group()
+cursor_list = pygame.sprite.Group()
 
 # setting resolution
 cursorpic = pygame.image.load("rec/cursor.png").convert_alpha()
