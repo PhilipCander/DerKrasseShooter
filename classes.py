@@ -78,6 +78,8 @@ class Missile(pygame.sprite.Sprite):
         self.height = height
         self.image = pygame.Surface([width, height], pygame.SRCALPHA)
         self.image = self.image.convert_alpha(self.image)
+        self.dest_x = 0
+        self.dest_y = 0
         pygame.draw.ellipse(self.image, color, [0, 0, width, height], 0)
 
         # does not work yet

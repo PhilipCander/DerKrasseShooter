@@ -98,15 +98,16 @@ class Endless:
                         missile.rect.y = player.rect.y
                         missiles.add(missile)
                         all_sprites_list.add(missile)
+                        missile.dest_x = self.mouse[0]
+                        missile.dest_y = self.mouse[1]
 
             # moving the missile
             for missile in missiles:
                 start_x = player.rect.x
                 start_y = player.rect.y
-                dest_x = self.mouse[0]
-                dest_y = self.mouse[1]
-                x_diff = dest_x - start_x
-                y_diff = dest_y - start_y
+
+                x_diff = missile.dest_x - start_x
+                y_diff = missile.dest_y - start_y
                 angle = math.atan2(y_diff, x_diff)
                 # missile.angle = math.degrees(angle)
                 change_x = math.cos(angle) * 20
