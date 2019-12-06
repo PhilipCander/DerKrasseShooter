@@ -97,3 +97,21 @@ class Missile(pygame.sprite.Sprite):
         self.change_x = math.cos(self.angle) * 10
         self.change_y = math.sin(self.angle) * 10
         self.rect = self.image.get_rect()
+
+
+class Button(pygame.sprite.Sprite):
+    def __init__(self, width, height, pic):
+        super().__init__()
+        self.width = width
+        self.height = height
+        self.pic = pic
+        self.pic_size_x = self.width
+        self.pic_size_y = self.height
+        self.pic = pygame.transform.scale(self.pic, (self.pic_size_x, self.pic_size_y))
+        self.image = pygame.Surface([width, self.height], pygame.SRCALPHA)
+        self.image = self.image.convert_alpha(self.image)
+        self.image.fill(red)
+        self.image.blit(self.pic, (0, 0))
+
+        self.rect = self.image.get_rect()
+        print(self.rect.w)

@@ -40,8 +40,10 @@ wall_list = pygame.sprite.Group()
 all_sprites_list = pygame.sprite.Group()
 background_list = pygame.sprite.Group()
 cursor_list = pygame.sprite.Group()
+button_list = pygame.sprite.Group()
 
-# setting resolution
+buttonpic = pygame.image.load("rec/button1.png").convert_alpha()
+
 cursorpic = pygame.image.load("rec/cursor.png").convert_alpha()
 cursorpic = pygame.transform.scale(cursorpic, (40, 40))
 
