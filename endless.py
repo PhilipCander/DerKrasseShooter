@@ -254,8 +254,10 @@ class Endless:
 
             all_sprites_list.draw(window)
             cursor_list.draw(window)
-            text = pygame.font.Font.render(font1, f"{self.score}", True, green)
+            text = pygame.font.Font.render(font1, f"SCORE {self.score}", True, green)
+            fps = pygame.font.Font.render(font2, str(int(clock.get_fps())), True, green)
             window.blit(text, (50, screen_height - 200))
+            window.blit(fps, (10, 10))
             pygame.display.update()
 
         # after exiting, killing sprites

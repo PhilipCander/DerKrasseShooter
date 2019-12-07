@@ -90,7 +90,6 @@ class Missile(pygame.sprite.Sprite):
         self.diff_x = self.dest_x - self.start_x
         self.diff_y = self.dest_y - self.start_y
 
-        print("test", self.diff_x, self.diff_y)
         self.angle = math.atan2(self.diff_y, self.diff_x)
         self.angle = math.degrees(self.angle)
 

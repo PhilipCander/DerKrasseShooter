@@ -9,6 +9,7 @@ def start_screen():
     global clock
     global health
     global mouse_visibility
+    global fps
     for block in block_list:
         pygame.sprite.Sprite.kill(block)
     for block in block2_list:
@@ -55,6 +56,8 @@ def start_screen():
         button1.update()
         window.fill(black)
         background_list.draw(window)
+        fps = pygame.font.Font.render(font2, str(int(clock.get_fps())), True, green)
+        window.blit(fps, (10, 10))
         window.blit(title2, ((screen_width/2) - (titelx/2), (screen_height/2) - (titely/2)))
         button_list.draw(window)
         pygame.display.flip()

@@ -20,6 +20,9 @@ blue = (0, 0, 250)
 green = (0, 250, 0)
 black = (0, 0, 0)
 white = (250, 250, 250)
+font1 = pygame.font.Font("rec/FFFFORWA.TTF", 30)
+font2 = pygame.font.Font("rec/FFFFORWA.TTF", 10)
+
 
 # defining vars for the game
 speed = 90
@@ -28,6 +31,7 @@ wave2 = 1
 run = False
 health = 100
 clock = pygame.time.Clock()
+fps = pygame.font.Font.render(font1, str(int(clock.get_fps())), True, blue)
 
 # creating sprite-groups
 block_list = pygame.sprite.Group()
@@ -52,7 +56,7 @@ title2 = pygame.image.load("rec/Titel2.png").convert_alpha()
 titelx = 930
 titely = 264
 
-font1 = pygame.font.Font("rec/FFFFORWA.TTF", 30)
+
 
 bg = pygame.image.load("rec/bg.jpg").convert_alpha()
 bg = pygame.transform.scale(bg, (screen_width, screen_height))
