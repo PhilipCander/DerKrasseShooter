@@ -8,11 +8,10 @@ from classes import Missile
 
 def body(health):
     global bg2
-    bg2 = pygame.transform.scale(bg2, (screen_width, screen_height - 250))
-    window.blit(bg2, (0, (screen_height - 250)))
+    window.blit(bg2, (0, (screen_height - 300)))
     # pygame.draw.rect(window, black, (0, (screen_height - 200), screen_width, 200))
-    pygame.draw.rect(window, red, (1600, screen_height - 200, 300, 20))
-    pygame.draw.rect(window, green, (1600, screen_height - 200, health*3, 20))
+    pygame.draw.rect(window, red, (900, screen_height - 180, 300, 20))
+    pygame.draw.rect(window, green, (900, screen_height - 180, health*3, 20))
 
 
 def blub(times):
@@ -48,6 +47,17 @@ def blub3(times):
         all_sprites_list.add(bomber)
 
 
+def drop(x, y):
+    zufall = random.randint(0, 4)
+    if zufall == 1:
+        drop_ammo = Block(None, ammo1, 25, 25, 0)
+        drop_ammo.rect.x = x
+        drop_ammo.rect.y = y
+
+        ammo_drop_list.add(drop_ammo)
+        all_sprites_list.add(drop_ammo)
+
+
 class Endless:
     def __init__(self, health):
         super().__init__()
@@ -59,17 +69,23 @@ class Endless:
         self.mouse_visibility = pygame.mouse.set_visible(False)
         self.health = health
         self.score = 0
+        self.ammo = ammo
 
     def run(self):
         # missile = Block(red, None, 5, 10, None)
         player = Player(spaceship, 50, 50)
         player.rect.x = screen_width/2
         cursor = Block(None, cursorpic, 40, 40, None)
+        ammopic = Block(None, ammo1, 25, 25, 0)
         wall = Wall(red, 10, screen_height)
         wall_list.add(wall)
         cursor_list.add(cursor)
+        ammopic_list.add(ammopic)
         all_sprites_list.add(wall)
         all_sprites_list.add(player)
+        player_list.add(player)
+        ammopic.rect.y = screen_height - 200
+        ammopic.rect.x = 50
         blub(2)
         while self.endless_run:
             # clock
@@ -91,8 +107,11 @@ class Endless:
                     if event.key == pygame.K_ESCAPE:
                         self.endless_run = False
 
-                if event.type == pygame.MOUSEBUTTONDOWN:
+                # shoot missiles
+                if event.type == pygame.MOUSEBUTTONDOWN and self.ammo > 0:
+
                     if event.button == 1:
+                        self.ammo -= 1
                         missile = Missile(white, 5, 10, self.mouse[0], self.mouse[1], player.rect.x, player.rect.y)
                         missile.rect.x = player.rect.x + 25
                         missile.rect.y = player.rect.y
@@ -166,6 +185,7 @@ class Endless:
                     explosion.rect.x, explosion.rect.y = block.rect.x, block.rect.y
                     all_explosion.add(explosion)
                     all_sprites_list.add(explosion)
+                    drop(block.rect.x, block.rect.y)
 
             # Checking for all interactions of block2
             for block in block2_list:
@@ -220,6 +240,16 @@ class Endless:
                     bomber_exploded_list.add(explosion)
                     all_sprites_list.add(explosion)
 
+            for player in player_list:
+                player_pickup = pygame.sprite.spritecollide(player, ammo_drop_list, True)
+                if player_pickup:
+                    self.ammo += 10
+
+            # Checking all interactions with ammo_drop
+            for drop_ammo in ammo_drop_list:
+                if drop_ammo.rect.y < screen_height - 300:
+                    drop_ammo.rect.y += 2
+
             # Checking the countdown for explosions
             for explosion in all_explosion:
                 explosion.explosion_count += 1
@@ -235,7 +265,7 @@ class Endless:
 
             # Checking for all interaction of missile
             for missile in missiles:
-                if missile.rect.y <= 75:
+                if missile.rect.y <= -10:
                     pygame.sprite.Sprite.kill(missile)
 
             # Checking for all interaction of health
@@ -256,8 +286,11 @@ class Endless:
             cursor_list.draw(window)
             text = pygame.font.Font.render(font1, f"SCORE {self.score}", True, green)
             fps = pygame.font.Font.render(font2, str(int(clock.get_fps())), True, green)
-            window.blit(text, (50, screen_height - 200))
+            window.blit(text, (50, screen_height - 100))
             window.blit(fps, (10, 10))
+            ammo_text = pygame.font.Font.render(font3, f"{self.ammo}", True, green)
+            window.blit(ammo_text, (100, screen_height - 200))
+            ammopic_list.draw(window)
             pygame.display.update()
 
         # after exiting, killing sprites

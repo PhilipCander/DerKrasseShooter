@@ -26,6 +26,7 @@ font3 = pygame.font.Font("rec/FFFFORWA.TTF", 20)
 
 
 # defining vars for the game
+ammo = 15
 speed = 90
 wave = 1
 wave2 = 1
@@ -47,6 +48,9 @@ background_list = pygame.sprite.Group()
 cursor_list = pygame.sprite.Group()
 button_list = pygame.sprite.Group()
 mouse_list = pygame.sprite.Group()
+ammopic_list = pygame.sprite.Group()
+ammo_drop_list = pygame.sprite.Group()
+player_list = pygame.sprite.Group()
 
 buttonpic = pygame.image.load("rec/button1.png").convert_alpha()
 
@@ -58,12 +62,12 @@ title2 = pygame.image.load("rec/Titel2.png").convert_alpha()
 titelx = 930
 titely = 264
 
-
+ammo1 = pygame.image.load("rec/ammo.png").convert_alpha()
 
 bg = pygame.image.load("rec/bg.jpg").convert_alpha()
 bg = pygame.transform.scale(bg, (screen_width, screen_height))
-bg2 = pygame.image.load("rec/bg2.jpg").convert_alpha()
-bg2 = pygame.transform.scale(bg2, (screen_width, (screen_height - 500)))
+bg2 = pygame.image.load("rec/bg2.png").convert_alpha()
+bg2 = pygame.transform.scale(bg2, (screen_width, 300))
 spaceship = pygame.image.load("rec/spaceship.png").convert_alpha()
 spaceship = pygame.transform.scale(spaceship, (50, 50))
 
