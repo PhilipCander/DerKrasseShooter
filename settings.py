@@ -22,6 +22,7 @@ black = (0, 0, 0)
 white = (250, 250, 250)
 font1 = pygame.font.Font("rec/FFFFORWA.TTF", 30)
 font2 = pygame.font.Font("rec/FFFFORWA.TTF", 10)
+font3 = pygame.font.Font("rec/FFFFORWA.TTF", 20)
 
 
 # defining vars for the game
@@ -45,6 +46,7 @@ all_sprites_list = pygame.sprite.Group()
 background_list = pygame.sprite.Group()
 cursor_list = pygame.sprite.Group()
 button_list = pygame.sprite.Group()
+mouse_list = pygame.sprite.Group()
 
 buttonpic = pygame.image.load("rec/button1.png").convert_alpha()
 
