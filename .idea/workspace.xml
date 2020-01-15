@@ -2,32 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76bd5a4b-d0ef-4c28-9008-7cc4028aea47" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/rec/ammo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/bg2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rec/explosion/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rec/scrolling_bg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rec/scrolling_bg2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/rec/scrolling_bg3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DerKrasseShooter.py" beforeDir="false" afterPath="$PROJECT_DIR$/DerKrasseShooter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/endless.py" beforeDir="false" afterPath="$PROJECT_DIR$/endless.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
     </list>
@@ -199,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575903993089</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Improved the missile flight">
+      <created>1575916252779</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575916252779</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

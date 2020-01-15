@@ -46,9 +46,10 @@ class Explosion(pygame.sprite.Sprite):
 
 
 class Background(pygame.sprite.Sprite):
-    def __init__(self, pic):
+    def __init__(self, pic, layer):
         super().__init__()
         self.pic = pic
+        self.layer = layer
         self.width = screen_width
         self.height = screen_height
         self.explosion_count = 0

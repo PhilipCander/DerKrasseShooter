@@ -64,6 +64,14 @@ titely = 264
 
 ammo1 = pygame.image.load("rec/ammo.png").convert_alpha()
 
+sc_bg1 = pygame.image.load("rec/scrolling_bg1.png")
+sc_bg2 = pygame.image.load("rec/scrolling_bg2.png")
+sc_bg3 = pygame.image.load("rec/scrolling_bg3.png")
+sc_bg1 = pygame.transform.scale(sc_bg1, (screen_width, screen_height))
+sc_bg2 = pygame.transform.scale(sc_bg2, (screen_width, screen_height))
+sc_bg3 = pygame.transform.scale(sc_bg3, (screen_width, screen_height))
+
+
 bg = pygame.image.load("rec/bg.jpg").convert_alpha()
 bg = pygame.transform.scale(bg, (screen_width, screen_height))
 bg2 = pygame.image.load("rec/bg2.png").convert_alpha()

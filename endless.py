@@ -98,7 +98,7 @@ class Endless:
             self.mouse = pygame.mouse.get_pos()
             self.keys = pygame.key.get_pressed()
             # defining wall position
-            wall.rect.x = screen_width - 100
+            wall.rect.x = screen_width + 30
             wall.rect.y = 0
             for event in pygame.event.get():
                 if event.type == pygame.KEYDOWN:

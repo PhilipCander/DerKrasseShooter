@@ -17,12 +17,27 @@ def start_screen():
         pygame.sprite.Sprite.kill(explosion)
 
     # init background
-    background = Background(bg)
-    background2 = Background(bg)
+    sc1_background = Background(sc_bg3, 1)
+    sc1_background2 = Background(sc_bg3, 1)
+    background_list.add(sc1_background)
+    background_list.add(sc1_background2)
+    sc_background = Background(sc_bg2, 2)
+    sc_background2 = Background(sc_bg2, 2)
+    background_list.add(sc_background)
+    background_list.add(sc_background2)
+    background = Background(sc_bg1, 3)
+    background2 = Background(sc_bg1, 3)
     background_list.add(background)
     background_list.add(background2)
+
+
+
     background.rect.x = 0
     background2.rect.x = screen_width
+    sc_background.rect.x = 0
+    sc_background2.rect.x = screen_width
+    sc1_background.rect.x = 0
+    sc1_background2.rect.x = screen_width
 
     # init mouse
     mouse_box = Block(red, None, 10, 10, 0)
@@ -56,7 +71,12 @@ def start_screen():
 
         # moving the background to side
         for background in background_list:
-            background.rect.x -= 1
+            if background.layer == 1:
+                background.rect.x -= 1
+            if background.layer == 2:
+                background.rect.x -= 2
+            if background.layer == 3:
+                background.rect.x -= 3
             if background.rect.x <= -screen_width:
                 pygame.sprite.Sprite.kill(background)
                 background_list.add(background)
@@ -73,7 +93,8 @@ def start_screen():
         pygame.display.flip()
 
     mouse_visibility = pygame.mouse.set_visible(False)
-
+    for bg in background_list:
+        pygame.sprite.Sprite.kill(bg)
     # after exiting killing all sprites
     for mouse in mouse_list:
         pygame.sprite.Sprite.kill(mouse)
