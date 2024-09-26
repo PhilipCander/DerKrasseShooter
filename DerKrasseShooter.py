@@ -66,7 +66,7 @@ def start_screen():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     start_screen_run = False
-                if event.key == pygame.K_x:
+                if event.key == pygame.K_ESC:
                     pygame.quit()
 
         # moving the background to side

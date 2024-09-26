@@ -1,13 +1,11 @@
 import pygame
 import random
-import ctypes
 import math
 math.acos(1)
 randomInit = random.randint(0, 0)
 
 # getting screensize for formatting the window
-user32 = ctypes.windll.user32
-screen_width, screen_height = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+screen_width, screen_height = 1200, 700
 
 pygame.init()
 
@@ -79,7 +77,7 @@ bg2 = pygame.transform.scale(bg2, (screen_width, 300))
 spaceship = pygame.image.load("rec/spaceship.png").convert_alpha()
 spaceship = pygame.transform.scale(spaceship, (50, 50))
 
-bomberpic = pygame.image.load("rec/bomber.png").convert_alpha()
+bomberpic = pygame.image.load("rec/Bomber.png").convert_alpha()
 bomberpic = pygame.transform.scale(bomberpic, (200, 75))
 
 spacesship2 = pygame.image.load("rec/spaceship2.png").convert_alpha()
